@@ -240,6 +240,7 @@ public class RSA_GUI {
 				Decryption decryption = new Decryption(key.getD(), key.getN(), encryption.getCiphertexts_blocks(),
 						encryption.getCiphertext_stealing_or_not());
 				decryptedMessage.setText(decryption.getReal_plaintext());
+				encryption.getCiphertexts_blocks().clear();
 			}
 		});
 		DecryptButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
