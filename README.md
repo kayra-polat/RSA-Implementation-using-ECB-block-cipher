@@ -4,6 +4,8 @@
 - This program is a program that encrypts the text entered by the user using the RSA algorithm and, if the user wishes, decrypts the encrypted data using the RSA algorithm and displays it to the user.
 - This program was written in [Eclipse](https://www.eclipse.org/) using [JAVA](https://www.java.com/tr/).
 - The frontend application was written using Java's [Swing](https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html) and [awt](https://docs.oracle.com/javase/7/docs/api/java/awt/package-summary.html) library.
+- Normally ciphertext stealing is not a good practice due to the nature of the RSA Algorithm, but this program shows how the ciphertext stealing mentality can be somehow adapted to the RSA Algorithm.
+- 
 
 ## Explanation of the program
 - Object oriented logic has been used extensively while writing the program. Along with the RSA_GUI class, there are 3 more classes.
