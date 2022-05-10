@@ -5,14 +5,14 @@
 - This program was written in [Eclipse](https://www.eclipse.org/) using [JAVA](https://www.java.com/tr/).
 - The frontend application was written using Java's [Swing](https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html) and [awt](https://docs.oracle.com/javase/7/docs/api/java/awt/package-summary.html) library.
 - Normally ciphertext stealing is not a good practice due to the nature of the RSA Algorithm, but this program shows how the ciphertext stealing mentality can be somehow adapted to the RSA Algorithm.
-- 
+- Descriptions of methods and some important implementations are included in the Java files in the RSA-App file.
 
 ## Explanation of the program
 - Object oriented logic has been used extensively while writing the program. Along with the RSA_GUI class, there are 3 more classes.
   ### Key Gen.java
   - The Key Generation class is a class that allows us to create the Public-Private key pairs of the RSA Algorithm. This class, which calculates key pairs without using libraries like java.security, does all the important calculations required by the RSA algorithm.
   - When creating public and private keys, the goal is to have e, d, and n values at least 1024-bits long. Therefore, [BigInteger](https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html) data structure, which is a data structure provided by Java, is a data structure used in the whole program in general.
-  - Our goal is to determine e, d and its variables. Because Public Key(e,n) and Private Key(d,n) use these values. In order to determine these values, the steps in the diagram below must be followed:
+  - Our goal is to determine e, d and its variables. Because Public Key(e,n) and Private Key(d,n) use these values. In order to determine these values, the steps below must be followed:
     1. Pick two prime numbers => p and q
         - We apply Fermat's primality Test to select them.
         - **Fermat's primality Test**
@@ -60,6 +60,7 @@
     ```bash
     M(message) = C(ciphertext)^d mod n
     ```
+  - Because ECB is used, encrypted data becomes very long BigIntegers. We need to keep every block we encrypt in an ArrayList because it is very difficult for us to correctly split our ciphertext while decrypting. This class decrypts and concatinates the encrypted blocks stored in the arraylist one by one. This is how the original plaintext is accessed.
   - By decrypting each 16-bit block using RSA decryption, we reach the original state of the blocks.
   - Since there are ASCII values of the decrypted characters in each block, we also return them to their original character states.
 
@@ -71,7 +72,10 @@
   - If the user wants to encrypt without typing a text or selecting a key, a pop-up message is displayed on the screen. 
   
   ![Pop-up GUI](https://user-images.githubusercontent.com/75734949/167269097-006e36ec-642a-48df-beb5-8d30d784ded3.png)
-
+  
+  - If the user tries to encrypt a data with the public key of his/her choice and then tries to decrypt it with another private key, not the private key of that public key, a warning message as in the image below is displayed to the user.
+ 
+![PrivateKey-PopUp](https://user-images.githubusercontent.com/75734949/167662552-d5ae9123-ce9c-45db-ba62-1491b922c779.png)
 
         
         
