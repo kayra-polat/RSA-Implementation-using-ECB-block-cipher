@@ -249,7 +249,7 @@ public class RSA_GUI {
 				int index = KeyPairList.getSelectedIndex();
 
 				if (index != selected_index) {
-					JOptionPane.showMessageDialog(DecryptButton, "Please Choose Appopriate Private Key!!");
+					JOptionPane.showMessageDialog(DecryptButton, "Please Choose Appropriate Private Key!!");
 					flag = 1;
 					return;
 				} else {
