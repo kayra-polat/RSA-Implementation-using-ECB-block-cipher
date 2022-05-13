@@ -1,4 +1,3 @@
-//----------------------------
 // @author Kayra POLAT
 // RSA_GUI.java
 // Class implementation of User Interface of RSA Program
@@ -248,35 +247,39 @@ public class RSA_GUI {
 
 				int index = KeyPairList.getSelectedIndex();
 
-				if (index != selected_index) {
-					JOptionPane.showMessageDialog(DecryptButton, "Please Choose Appropriate Private Key!!");
-					flag = 1;
-					return;
-				} else {
-					KeyGen key = keys.get(index);
-					if (flag == 1) {
-						Decryption decryption = new Decryption(key.getD(), key.getN(), cipher_block,
-								encryption.getCiphertext_stealing_or_not());
-						decryptedMessage.setText(decryption.getReal_plaintext());
-						Collections.swap(cipher_block, cipher_block.size() - 2, cipher_block.size() - 1);
-						String last = cipher_block.get(cipher_block.size() - 1).toString();
-						last = last.substring(0, last.length() - 8);
-						BigInteger temp = new BigInteger(last);
-						cipher_block.set(cipher_block.size() - 1, temp);
-						flag = 0;
+				try {
+					if (index != selected_index) {
+						JOptionPane.showMessageDialog(DecryptButton, "Please Choose Appropriate Private Key!!");
+						flag = 1;
+						return;
 					} else {
-						Decryption decryption = new Decryption(key.getD(), key.getN(),
-								encryption.getCiphertexts_blocks(), encryption.getCiphertext_stealing_or_not());
-						decryptedMessage.setText(decryption.getReal_plaintext());
+						KeyGen key = keys.get(index);
+						if (flag == 1) {
+							Decryption decryption = new Decryption(key.getD(), key.getN(), cipher_block,
+									encryption.getCiphertext_stealing_or_not());
+							decryptedMessage.setText(decryption.getReal_plaintext());
+							Collections.swap(cipher_block, cipher_block.size() - 2, cipher_block.size() - 1);
+							String last = cipher_block.get(cipher_block.size() - 1).toString();
+							last = last.substring(0, last.length() - 8);
+							BigInteger temp = new BigInteger(last);
+							cipher_block.set(cipher_block.size() - 1, temp);
+							flag = 0;
+						} else {
+							Decryption decryption = new Decryption(key.getD(), key.getN(),
+									encryption.getCiphertexts_blocks(), encryption.getCiphertext_stealing_or_not());
+							decryptedMessage.setText(decryption.getReal_plaintext());
 
-						cipher_block = (ArrayList<BigInteger>) encryption.getCiphertexts_blocks().clone();
-						Collections.swap(cipher_block, cipher_block.size() - 2, cipher_block.size() - 1);
-						String last = cipher_block.get(cipher_block.size() - 1).toString();
-						last = last.substring(0, last.length() - 8);
-						BigInteger temp = new BigInteger(last);
-						cipher_block.set(cipher_block.size() - 1, temp);
-						encryption.getCiphertexts_blocks().clear();
+							cipher_block = (ArrayList<BigInteger>) encryption.getCiphertexts_blocks().clone();
+							Collections.swap(cipher_block, cipher_block.size() - 2, cipher_block.size() - 1);
+							String last = cipher_block.get(cipher_block.size() - 1).toString();
+							last = last.substring(0, last.length() - 8);
+							BigInteger temp = new BigInteger(last);
+							cipher_block.set(cipher_block.size() - 1, temp);
+							encryption.getCiphertexts_blocks().clear();
+						}
 					}
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(DecryptButton, "Please Choose Appropriate Private Key!!");
 				}
 
 			}
