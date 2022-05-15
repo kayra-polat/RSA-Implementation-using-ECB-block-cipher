@@ -6,7 +6,8 @@
 - The frontend application was written using Java's [Swing](https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html) and [awt](https://docs.oracle.com/javase/7/docs/api/java/awt/package-summary.html) library.
 - Normally ciphertext stealing is not a good practice due to the nature of the RSA Algorithm, but this program shows how the ciphertext stealing mentality can be somehow adapted to the RSA Algorithm.
 - Descriptions of methods and some important implementations are included in the Java files in the RSA-App file.
-
+## Assumption
+- If the user encrypts a data and then decrypts it, he should not try to decrypt it again with another key. This behavior is against the logic of the program.
 ## Explanation of the program
 - Object oriented logic has been used extensively while writing the program. Along with the RSA_GUI class, there are 3 more classes.
   ### Key Gen.java
