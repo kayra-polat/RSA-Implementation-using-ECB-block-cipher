@@ -73,7 +73,7 @@
   
   ![Pop-up GUI](https://user-images.githubusercontent.com/75734949/167269097-006e36ec-642a-48df-beb5-8d30d784ded3.png)
   
-  - If the user encrypts and decrypts a data with the public key he/she chooses, and then tries to decrypt it with another private key, not the private key of that public key, a warning message as in the image below is displayed to the user.
+  - If the user encrypts a data with the public key he/she chooses, and then tries to decrypt it with another private key, not the private key of that public key, a warning message as in the image below is displayed to the user.
  
 ![PrivateKey-PopUp](https://user-images.githubusercontent.com/75734949/167662552-d5ae9123-ce9c-45db-ba62-1491b922c779.png)
 
